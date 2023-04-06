@@ -1,6 +1,6 @@
 const router = require('express').Router() //dilangsungkan
 // const {  getIndex  } = require('../controllers/ctrlBook')
-const tutorials = require("../controllers/controller.js");
+const gits = require("../controllers/controller.js");
 // const books = require("../controllers/controllerGits.js");
 
 /**
@@ -42,10 +42,16 @@ const tutorials = require("../controllers/controller.js");
  *              description: OK
  */
 
-// router.get("/", getIndex)
 
-// Create a new Tutorial
-router.post("/", tutorials.create);
+
+// Create a new author
+router.post("/author", gits.createAuthor);
+
+// Create a new author
+router.post("/publisher", gits.createPublisher);
+
+// Create a new book
+router.post("/book", gits.createBook);
   
 // // Retrieve all Tutorials
 // router.get("/", books.findAll);
