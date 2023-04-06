@@ -95,6 +95,49 @@ exports.updateAuthor = (req, res) => {
         });
       });
 };
+// Delete a Author with the specified id in the request
+exports.deleteAuthor = (req, res) => {
+  const id = req.params.id;
+
+  Gits.Author.destroy({
+    where: { id: id }
+  })
+    .then(num => {
+      if (num == 1) {
+        res.send({
+          message: "Author was deleted successfully!"
+        });
+      } else {
+        res.send({
+          message: `Cannot delete Author with id=${id}. Maybe Author was not found!`
+        });
+      }
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Could not delete Author with id=" + id
+      });
+    });
+};
+// Delete all Author from the database.
+exports.deleteAuthorAll = (req, res) => {
+  Gits.Author.destroy({
+        where: {},
+        truncate: false
+      })
+        .then(nums => {
+          res.send({ message: `${nums} Author were deleted successfully!` });
+        })
+        .catch(err => {
+          res.status(500).send({
+            message:
+              err.message || "Some error occurred while removing all Author."
+          });
+        });
+};
+
+
+
 
 
 // Create and Save a new publisher
@@ -147,7 +190,7 @@ exports.findPublisherAll = (req, res) => {
       });
     });
 };
-// Find a single book with an id
+// Find a single Publisher with an id
 exports.findPublisherOne = (req, res) => {
   const id = req.params.id;
 
@@ -190,6 +233,49 @@ exports.updatePublisher = (req, res) => {
       });
     });
 };
+// Delete a Publisher with the specified id in the request
+exports.deletePublisher = (req, res) => {
+  const id = req.params.id;
+
+  Gits.Publisher.destroy({
+    where: { id: id }
+  })
+    .then(num => {
+      if (num == 1) {
+        res.send({
+          message: "Publisher was deleted successfully!"
+        });
+      } else {
+        res.send({
+          message: `Cannot delete Publisher with id=${id}. Maybe Publisher was not found!`
+        });
+      }
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Could not delete Publisher with id=" + id
+      });
+    });
+};
+// Delete all Publisher from the database.
+exports.deletepublisherAll = (req, res) => {
+  Gits.Publisher.destroy({
+        where: {},
+        truncate: false
+      })
+        .then(nums => {
+          res.send({ message: `${nums} Publisher were deleted successfully!` });
+        })
+        .catch(err => {
+          res.status(500).send({
+            message:
+              err.message || "Some error occurred while removing all Publisher."
+          });
+        });
+};
+
+
+
 
 
 // Create and Save a new book
@@ -318,43 +404,19 @@ exports.deleteBook = (req, res) => {
         });
       });
 };
-
-
-
-
-
-
-
-
-
-
-// // Delete all Tutorials from the database.
-// exports.deleteAll = (req, res) => {
-//   Gits.destroy({
-//         where: {},
-//         truncate: false
-//       })
-//         .then(nums => {
-//           res.send({ message: `${nums} Tutorials were deleted successfully!` });
-//         })
-//         .catch(err => {
-//           res.status(500).send({
-//             message:
-//               err.message || "Some error occurred while removing all tutorials."
-//           });
-//         });
-// };
-
-// // Find all published Tutorials
-// exports.findAllPublished = (req, res) => {
-//   Gits.findAll({ where: { published: true } })
-//     .then(data => {
-//       res.send(data);
-//     })
-//     .catch(err => {
-//       res.status(500).send({
-//         message:
-//           err.message || "Some error occurred while retrieving tutorials."
-//       });
-//     });
-// };
+// Delete all Book from the database.
+exports.deleteBookAll = (req, res) => {
+  Gits.Book.destroy({
+        where: {},
+        truncate: false
+      })
+        .then(nums => {
+          res.send({ message: `${nums} Book were deleted successfully!` });
+        })
+        .catch(err => {
+          res.status(500).send({
+            message:
+              err.message || "Some error occurred while removing all Book."
+          });
+        });
+};

@@ -50,6 +50,12 @@ router.get("/author", gits.findAuthorAll);
 router.get("/author/:id", gits.findAuthorOne);
 // Update a author with id
 router.put("/author/:id", gits.updateAuthor);
+// Delete a author with id
+router.delete("/author/:id", gits.deleteAuthor);
+// Create a new author
+router.delete("/authordestroy", gits.deleteAuthorAll);
+
+
 
 
 // Create a new publisher 
@@ -60,30 +66,27 @@ router.get("/publisher", gits.findPublisherAll);
 router.get("/publisher/:id", gits.findPublisherOne);
 // Update a publisher with id
 router.put("/publisher/:id", gits.updatePublisher);
+// Delete a publisher with id
+router.delete("/publisher/:id", gits.deletePublisher);
+// Create a new publisher
+router.delete("/publisherdestroy", gits.deletepublisherAll);
+
+
+
+
 
 
 // Create a new book
 router.post("/book", gits.createBook);
-// Retrieve all author
+// Retrieve all book
 router.get("/book", gits.findBookAll);
 // Retrieve a single book with id
 router.get("/book/:isbn", gits.findBookOne);
-// Update a publisher with id
+// Update a book with id
 router.put("/book/:isbn", gits.updateBook);
-// Delete a Tutorial with id
+// Delete a book with id
 router.delete("/book/:isbn", gits.deleteBook);
-
-
-
-  
-
-
-
-
-
-
-// // Create a new Tutorial
-// router.delete("/", books.deleteAll);
-
+// Create a new book
+router.delete("/bookdestroy", gits.deleteBookAll);
 
 module.exports = router
