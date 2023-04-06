@@ -59,8 +59,8 @@ module.exports = (sequelize, Sequelize) => {
   Author.hasMany(Book);
   Book.belongsTo(Author);
 
-  Book.hasOne(Publisher, { foreignKey: "publisherId" });
-  Publisher.belongsTo(Book, { foreignKey: "publisherId", onDelete: "CASCADE" });
+  Book.hasOne(Publisher);
+  Publisher.belongsTo(Book);
 
   return {
     Book,

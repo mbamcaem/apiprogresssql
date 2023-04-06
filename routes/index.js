@@ -46,30 +46,41 @@ const gits = require("../controllers/controller.js");
 router.post("/author", gits.createAuthor);
 // Retrieve all author
 router.get("/author", gits.findAuthorAll);
+// Retrieve a single author
+router.get("/author/:id", gits.findAuthorOne);
+// Update a author with id
+router.put("/author/:id", gits.updateAuthor);
 
 
-
-// Create a new author 
+// Create a new publisher 
 router.post("/publisher", gits.createPublisher);
-// Retrieve all author
+// Retrieve all publisher
 router.get("/publisher", gits.findPublisherAll);
+// Retrieve a single publisher
+router.get("/publisher/:id", gits.findPublisherOne);
+// Update a publisher with id
+router.put("/publisher/:id", gits.updatePublisher);
 
 
 // Create a new book
 router.post("/book", gits.createBook);
+// Retrieve all author
+router.get("/book", gits.findBookAll);
+// Retrieve a single book with id
+router.get("/book/:isbn", gits.findBookOne);
+// Update a publisher with id
+router.put("/book/:isbn", gits.updateBook);
+// Delete a Tutorial with id
+router.delete("/book/:isbn", gits.deleteBook);
+
+
+
   
 
-// // Retrieve all published Tutorials
-// router.get("/published", books.findAllPublished);
 
-// // Retrieve a single Tutorial with id
-// router.get("/:id", books.findOne);
 
-// // Update a Tutorial with id
-// router.put("/:id", books.update);
 
-// // Delete a Tutorial with id
-// router.delete("/:id", books.delete);
+
 
 // // Create a new Tutorial
 // router.delete("/", books.deleteAll);
