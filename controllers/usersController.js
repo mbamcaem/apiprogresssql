@@ -42,7 +42,7 @@ exports.userLogin = (req, res) => {
     where: { email: req.body.email, password: hashHmacSha256(req.body.password, process.env.NEXT_PUBLIC_SECRET)  }
   })
   .then(num => {
-      console.log("Num", num.length);
+      // console.log("Num", num.length);
       if (num.length == 1) {
         res.send({
           message: "Login success"

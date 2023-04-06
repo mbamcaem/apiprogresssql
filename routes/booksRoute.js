@@ -4,38 +4,12 @@ const gits = require("../controllers/bookController.js");
 /**
  * @swagger
  * 
- * /api/v1/:
+ * /api/book/:
  *  get:
- *      summary: Version API
+ *      summary: Book Api
  *      tags:
- *          - Version
+ *          - Book
  *      responses:
- *          200:
- *              description: OK
- */
-
-
-/**
- * @swagger
- * 
- * /weather:
- *  get:
- *      summary: get next 17 days forecast
- *      tags:
- *          - Weather
- *      parameters:
- *          - name: input
- *            description: the city | country | state of the user\'s input
- *            in: query
- *            required: true
- *            schema:
- *                  type: string
- *                  example: tehran
- *      responses:
- *          400:
- *              description: validation errors
- *          503:
- *              description: service errors
  *          200:
  *              description: OK
  */
