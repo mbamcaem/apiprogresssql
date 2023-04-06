@@ -35,7 +35,25 @@ exports.createAuthor = (req, res) => {
           err.message || "Some error occurred while creating the author."
       });
     });
-};
+  };
+    
+// Retrieve all Author from the database.
+  exports.findAuthorAll = (req, res) => {
+      const name = req.query.name;
+      var condition = name ? { name: { [Op.iLike]: `%${name}%` } } : null;
+    
+      Gits.Author.findAll({ where: condition })
+        .then(data => {
+          res.send(data);
+        })
+        .catch(err => {
+          res.status(500).send({
+            message:
+              err.message || "Some error occurred while retrieving Authors."
+          });
+        });
+  };
+
 
 // Create and Save a new Author
 exports.createPublisher = (req, res) => {
@@ -71,6 +89,24 @@ exports.createPublisher = (req, res) => {
      });
    });
 };
+// Retrieve all Author from the database.
+exports.findPublisherAll = (req, res) => {
+  const name = req.query.name;
+  var condition = name ? { name: { [Op.iLike]: `%${name}%` } } : null;
+
+  Gits.Publisher.findAll({ where: condition })
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving Publisher."
+      });
+    });
+};
+
+
 
 // Create and Save a new Author
 exports.createBook = (req, res) => {
@@ -115,23 +151,6 @@ exports.createBook = (req, res) => {
    });
 };
 
-
-// // Retrieve all Tutorials from the database.
-// exports.findAll = (req, res) => {
-//     const title = req.query.title;
-//     var condition = title ? { title: { [Op.iLike]: `%${title}%` } } : null;
-  
-//     Gits.findAll({ where: condition })
-//       .then(data => {
-//         res.send(data);
-//       })
-//       .catch(err => {
-//         res.status(500).send({
-//           message:
-//             err.message || "Some error occurred while retrieving tutorials."
-//         });
-//       });
-// };
 
 // // Find a single Tutorial with an id
 // exports.findOne = (req, res) => {

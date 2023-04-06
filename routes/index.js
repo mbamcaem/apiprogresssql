@@ -1,7 +1,5 @@
 const router = require('express').Router() //dilangsungkan
-// const {  getIndex  } = require('../controllers/ctrlBook')
 const gits = require("../controllers/controller.js");
-// const books = require("../controllers/controllerGits.js");
 
 /**
  * @swagger
@@ -46,15 +44,20 @@ const gits = require("../controllers/controller.js");
 
 // Create a new author
 router.post("/author", gits.createAuthor);
+// Retrieve all author
+router.get("/author", gits.findAuthorAll);
 
-// Create a new author
+
+
+// Create a new author 
 router.post("/publisher", gits.createPublisher);
+// Retrieve all author
+router.get("/publisher", gits.findPublisherAll);
+
 
 // Create a new book
 router.post("/book", gits.createBook);
   
-// // Retrieve all Tutorials
-// router.get("/", books.findAll);
 
 // // Retrieve all published Tutorials
 // router.get("/published", books.findAllPublished);
