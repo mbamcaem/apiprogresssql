@@ -54,6 +54,17 @@ module.exports = (sequelize, Sequelize) => {
     },
   });
 
+
+  const User = sequelize.define("user", {
+    email: {
+      type: Sequelize.STRING,
+      allowNull: false,
+      unique: true,
+    },
+    password: Sequelize.STRING,
+  });
+
+
   // Define associations between models
 
   Author.hasMany(Book);
@@ -66,5 +77,6 @@ module.exports = (sequelize, Sequelize) => {
     Book,
     Author,
     Publisher,
+    User
   };
 };

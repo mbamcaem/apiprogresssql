@@ -1,10 +1,13 @@
-const express = require("express");
 require('dotenv').config()
+const express = require("express");
 const cors = require("cors");
 const swaggerUi = require('swagger-ui-express')
 const swaggerDocument = require('./controllers/swagger.controller')
 const app = express();
-const routes = require('./routes')
+const routeUser = require('./routes/usersRoute')
+const routerAuthor = require('./routes/authorsRoute')
+const routerPublisher = require("./routes/PublisherRoute");
+const routerBook = require("./routes/booksRoute");
 
 app.use('/api-docs', swaggerUi.serve, swaggerDocument)
 app.use(cors());
@@ -16,13 +19,18 @@ app.use(express.json());
 
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
-app.use("/api", routes)
-
+app.use("/api", routeUser)
+app.use("/api", routerAuthor)
+app.use("/api", routerPublisher)
+app.use("/api", routerBook)
 
 const db = require("./models");
+
+// drop the table if it already exists
 // db.sequelize.sync({ force: true }).then(() => {
 //   console.log("Drop and re-sync db.");
 // });
+
 db.sequelize.sync()
   .then(() => {
     console.log("Synced db.");

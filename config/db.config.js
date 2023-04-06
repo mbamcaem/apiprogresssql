@@ -1,10 +1,9 @@
-
 module.exports = {
-    HOST: "localhost",
-    USER: "postgres",
-    PASSWORD: "12345678",
-    DB: "GITS",
-    dialect: "postgres",
+    HOST: process.env.NEXT_PUBLIC_HOST,
+    USER: process.env.NEXT_PUBLIC_USER,
+    PASSWORD: process.env.NEXT_PUBLIC_PASSWORD,
+    DB: process.env.NEXT_PUBLIC_DB,
+    dialect: process.env.NEXT_PUBLIC_dialect,
     pool: {
       max: 5,
       min: 0,
@@ -14,7 +13,6 @@ module.exports = {
   };
 
 //   Sequelize connection pool configuration:
-
 // max: maximum number of connection in pool
 // min: minimum number of connection in pool
 // idle: maximum time, in milliseconds, that a connection can be idle before being released
